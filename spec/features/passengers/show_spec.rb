@@ -18,7 +18,7 @@ RSpec.describe "Passenger Show Page" do
     FlightPassenger.create!(flight: @flight3, passenger: @passenger1)
   end
   it "displays the passengers name and flights" do
-    visit "/passengers/#{@passenger1}"
+    visit "/passengers/#{@passenger1.id}"
 
     expect(page).to have_content(@passenger1.name)
 
@@ -27,6 +27,8 @@ RSpec.describe "Passenger Show Page" do
       expect(page).to have_link(@flight2.number)
       expect(page).to have_link(@flight3.number)
     end
+    click_on "#{@flight1.number}"
+    expect(current_path).to eq("/flights/#{@flight1.id}")
   end
 end
 
