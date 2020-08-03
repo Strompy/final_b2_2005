@@ -29,6 +29,10 @@ RSpec.describe "Passenger Show Page" do
     end
     click_on "#{@flight1.number}"
     expect(current_path).to eq("/flights/#{@flight1.id}")
+
+    visit "/passengers/#{@passenger1.id}"
+    click_on "#{@flight2.number}"
+    expect(current_path).to eq("/flights/#{@flight2.id}")
   end
 end
 
