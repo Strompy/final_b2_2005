@@ -8,10 +8,10 @@ RSpec.describe "Flight Show Page" do
     @passenger2 = Passenger.create!(name: "Elaine Dickinson", age: 25)
     @passenger3 = Passenger.create!(name: "Ted Striker", age: 30)
     @passenger4 = Passenger.create!(name: "Otto", age: 37)
-    FlightPath.create!(flight: @flight1, passenger: @passenger1)
-    FlightPath.create!(flight: @flight1, passenger: @passenger2)
-    FlightPath.create!(flight: @flight1, passenger: @passenger3)
-    FlightPath.create!(flight: @flight1, passenger: @passenger4)
+    FlightPassenger.create!(flight: @flight1, passenger: @passenger1)
+    FlightPassenger.create!(flight: @flight1, passenger: @passenger2)
+    FlightPassenger.create!(flight: @flight1, passenger: @passenger3)
+    FlightPassenger.create!(flight: @flight1, passenger: @passenger4)
   end
   it "shows all flight information" do
 
