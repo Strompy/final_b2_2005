@@ -7,14 +7,15 @@ RSpec.describe "Flight Show Page" do
     @passenger1 = Passenger.create!(name: "Kareem Abdul-Jabbar", age: 32)
     @passenger2 = Passenger.create!(name: "Elaine Dickinson", age: 25)
     @passenger3 = Passenger.create!(name: "Ted Striker", age: 30)
-    @passenger4 = Passenger.create!(name: "Otto", age: 37)
+    @passenger4 = Passenger.create!(name: "Otto", age: 3)
+    @passenger5 = Passenger.create!(name: "Joey", age: 8)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger1)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger2)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger3)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger4)
+    FlightPassenger.create!(flight: @flight1, passenger: @passenger5)
   end
   it "shows all flight information" do
-
     visit "/flights/#{@flight1.id}"
 
     expect(page).to have_content(@flight1.number)
@@ -28,18 +29,10 @@ RSpec.describe "Flight Show Page" do
       expect(page).to have_content(passenger.name)
     end
   end
-end
+  it "displays count of minors and adults on the flight" do
+    visit "/flights/#{@flight1.id}"
 
-# User Story 1, Flights Show Page
-# ​
-# As a visitor
-# When I visit a flights show page
-# I see all of that flights information including:
-#   - number
-#   - date
-#   - time
-#   - departure city
-#   - arrival city
-# And I see the name of the airline this flight belongs
-# And I see the names of all of the passengers on this flight
-# ```
+    expect(page).to have_content("Number of minors: 2")
+    expect(page).to have_content("Number of adults: 3")
+  end
+end
