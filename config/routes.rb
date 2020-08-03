@@ -3,5 +3,4 @@ Rails.application.routes.draw do
 
   resources :passengers, only: [:show]
   patch '/passengers/:id/add_flight', to: 'flight_passengers#create'
-  # get '/passengers/:id', to: 'passengers#show'
 end
