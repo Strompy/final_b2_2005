@@ -6,6 +6,7 @@ RSpec.describe "Passenger Show Page" do
     @flight1 = @airline.flights.create!(number: "1727", date: "08/03/20", time: "10:12", departure_city: "Denver", arrival_city: "Reno")
     @flight2 = @airline.flights.create!(number: "1235", date: "10/10/20", time: "12:10", departure_city: "Denver", arrival_city: "Seattle")
     @flight3 = @airline.flights.create!(number: "6566", date: "10/13/20", time: "17:45", departure_city: "Seattle", arrival_city: "Denver")
+    @flight4 = @airline.flights.create!(number: "4213", date: "10/20/20", time: "20:00", departure_city: "Denver", arrival_city: "Santa Fe")
     @passenger1 = Passenger.create!(name: "Kareem Abdul-Jabbar", age: 32)
     @passenger2 = Passenger.create!(name: "Elaine Dickinson", age: 25)
     @passenger3 = Passenger.create!(name: "Ted Striker", age: 30)
@@ -34,14 +35,17 @@ RSpec.describe "Passenger Show Page" do
     click_on "#{@flight2.number}"
     expect(current_path).to eq("/flights/#{@flight2.id}")
   end
+  it "has link to a form to assign passenger to new flight" do
+    visit "/passengers/#{@passenger1.id}"
+
+    expect(page).to_not have_content(@flight4.number)
+
+    fill_in :number, with: @flight4.number
+
+    click_on "Submit"
+
+    expect(current_path).to eq("/passengers/#{@passenger1.id}")
+
+    expect(page).to have_link(@flight4.number)
+  end
 end
-
-
-
-# User Story 2, Passenger Show Page
-# ​
-# As a visitor
-# When I visit a passengers show page
-# I see that passengers name
-# And I see a section of the page that displays all flight numbers of the flights for that passenger
-# All flight numbers are links to that flight’s show page

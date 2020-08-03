@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get '/flights/:id', to: 'flights#show'
 
-  get '/passengers/:id', to: 'passengers#show'
+  resources :passengers, only: [:show]
+  patch '/passengers/:id/add_flight', to: 'flight_passengers#create'
+  # get '/passengers/:id', to: 'passengers#show'
 end
