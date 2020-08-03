@@ -5,7 +5,7 @@ class Flight < ApplicationRecord
   has_many :flight_passengers
   has_many :passengers, through: :flight_passengers
 
-  def total_passengers_count
+  def total_passenger_count
     passengers.count
   end
 

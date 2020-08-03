@@ -10,7 +10,7 @@ RSpec.describe "Passenger Show Page" do
     @passenger1 = Passenger.create!(name: "Kareem Abdul-Jabbar", age: 32)
     @passenger2 = Passenger.create!(name: "Elaine Dickinson", age: 25)
     @passenger3 = Passenger.create!(name: "Ted Striker", age: 30)
-    @passenger4 = Passenger.create!(name: "Otto", age: 37)
+    @passenger4 = Passenger.create!(name: "Otto", age: 18)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger1)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger2)
     FlightPassenger.create!(flight: @flight1, passenger: @passenger3)

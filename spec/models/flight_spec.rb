@@ -29,7 +29,7 @@ RSpec.describe Flight do
       FlightPassenger.create!(flight: @flight1, passenger: @passenger5)
     end
     it "counts total_passengers_count" do
-      expect(@flight1.total_passengers_count).to eq(5)
+      expect(@flight1.total_passenger_count).to eq(5)
     end
     it "counts number_of_minors" do
       expect(@flight1.number_of_minors).to eq(2)
